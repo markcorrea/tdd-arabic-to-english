@@ -30,7 +30,12 @@ let entryValue = validatesEntryValue(entry)
 
 printConsole(entryValue)
 
+function mountDozen(entry) {
+  let stringEntry = entry.toString()
+  console.log(stringEntry.split(''))
+}
 
+mountDozen(21)
 
 
 
