@@ -30,12 +30,12 @@ let entryValue = validatesEntryValue(entry)
 
 printConsole(entryValue)
 
-function mountDozen(entry) {
+function parseEntry(entry) {
   let stringEntry = entry.toString()
-  console.log(stringEntry.split(''))
+  return stringEntry.split('')
 }
 
-mountDozen(21)
+parseEntry(12345)
 
 
 
@@ -43,5 +43,6 @@ module.exports = {
   validatesEntryValue,
   unities,
   tenths,
-  dozens
+  dozens,
+  parseEntry
 }

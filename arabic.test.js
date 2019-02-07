@@ -2,7 +2,8 @@ var {
   validatesEntryValue,
   unities,
   tenths,
-  dozens
+  dozens,
+  parseEntry
 } = require('./arabic')
 
 function checkArrayOfStrings(array) {
@@ -34,5 +35,11 @@ describe('Validates the number declaration arrays', () => {
 
   test('Returns true if dozens array only contains strings', () => {
     expect(checkArrayOfStrings(dozens)).toBe(true)
+  })
+})
+
+describe('Prepares the entry value before mounting english numerals.', () => {
+  test('Should return the entered numeral as an array of strings for each letter', () => {
+    expect(parseEntry(12345)).toEqual([1, 2, 3, 4, 5])
   })
 })
