@@ -31,12 +31,11 @@ let entryValue = validatesEntryValue(entry)
 printConsole(entryValue)
 
 function parseEntry(entry) {
-  let stringEntry = entry.toString()
-  let splittedString =  stringEntry.split('')
+  let splittedString =  entry.toString().split('')
   return splittedString.map(x => parseInt(x))
 }
 
-parseEntry(12345)
+console.log(parseEntry(12345))
 
 
 
