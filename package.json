@@ -1,0 +1,20 @@
+{
+  "name": "voyagin-test",
+  "version": "1.0.0",
+  "description": "A small frontend test envolving JavaScript and TDD tests.",
+  "main": "arabic2english.js",
+  "jest": {
+    "globals": {
+      "isTesting": true
+    }
+  },
+  "scripts": {
+    "test": "npm run startTest",
+    "startTest": "jest test"
+  },
+  "author": "Marcus Correa",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^24.1.0"
+  }
+}
