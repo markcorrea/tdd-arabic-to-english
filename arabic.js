@@ -32,7 +32,8 @@ printConsole(entryValue)
 
 function parseEntry(entry) {
   let stringEntry = entry.toString()
-  return stringEntry.split('')
+  let splittedString =  stringEntry.split('')
+  return splittedString.map(x => parseInt(x))
 }
 
 parseEntry(12345)
