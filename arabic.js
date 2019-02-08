@@ -35,7 +35,25 @@ function parseEntry(entry) {
   return splittedString.map(x => parseInt(x))
 }
 
-console.log(parseEntry(12345))
+let parsedEntry = parseEntry(entryValue)
+
+function reverseEntry(entry) {
+  return entry.reverse()
+}
+
+const reversedEntry = reverseEntry(parsedEntry)
+
+function getEnglishDozen(entry) {
+  let dozen = ''
+  if (entry.length > 1) {
+    if (entry[2] === 1) return tenths[entry[1]]
+    return dozen[2] + ' ' + unities[1]
+  }
+  return unities[1]
+}
+
+console.log(getEnglishDozen(reversedEntry))
+
 
 
 
@@ -44,5 +62,7 @@ module.exports = {
   unities,
   tenths,
   dozens,
-  parseEntry
+  parseEntry,
+  reverseEntry,
+  getEnglishDozen
 }

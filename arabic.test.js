@@ -3,7 +3,9 @@ var {
   unities,
   tenths,
   dozens,
-  parseEntry
+  parseEntry,
+  reverseEntry,
+  getEnglishDozen
 } = require('./arabic')
 
 function checkArrayOfStrings(array) {
@@ -41,5 +43,15 @@ describe('Validates the number declaration arrays', () => {
 describe('Prepares the entry value before mounting english numerals.', () => {
   test('Should return the entered numeral as an array of strings for each letter', () => {
     expect(parseEntry(12345)).toEqual([1, 2, 3, 4, 5])
+  })
+
+  test('Should reverse the given array', () => {
+    expect(reverseEntry([1, 2, 3, 4, 5])).toEqual([5, 4, 3, 2, 1])
+  })
+})
+
+describe('Builds the english numeral structure', () => {
+  test('Should build the dozen from the two last numbers of the array', () => {
+    expect(getEnglishDozen(123)).toEqual('twenty three')
   })
 })
