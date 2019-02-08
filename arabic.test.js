@@ -52,6 +52,6 @@ describe('Prepares the entry value before mounting english numerals.', () => {
 
 describe('Builds the english numeral structure', () => {
   test('Should build the dozen from the two last numbers of the array', () => {
-    expect(getEnglishDozen(123)).toEqual('twenty three')
+    expect(getEnglishDozen(123)).toEqual('twenty-three')
   })
 })
