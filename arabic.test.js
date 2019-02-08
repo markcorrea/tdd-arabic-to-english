@@ -64,4 +64,9 @@ describe('Builds the english dozens numeral structure', () => {
     let reversedEntry = reverseEntry([1, 0, 2])
     expect(getEnglishDozen(reversedEntry)).toEqual('two')
   })
+
+  test('Should return nothing, once the length is bigger than 3 and the last two digits are zero', () => {
+    let reversedEntry = reverseEntry([1, 0, 0])
+    expect(getEnglishDozen(reversedEntry)).toEqual('')
+  })
 })
