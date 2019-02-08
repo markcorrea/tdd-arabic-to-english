@@ -55,4 +55,9 @@ describe('Builds the english numeral structure', () => {
     let reversedEntry = reverseEntry([1, 2, 3])
     expect(getEnglishDozen(reversedEntry)).toEqual('twenty-three')
   })
+
+  test('Should return only one numeral second digit is zero', () => {
+    let reversedEntry = reverseEntry([1, 0, 2])
+    expect(getEnglishDozen(reversedEntry)).toEqual('two')
+  })
 })
