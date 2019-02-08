@@ -24,6 +24,10 @@ describe('Validates the input given number', () => {
   test('Should return an advice if the given number is not the format Number', () => {
     expect(validatesEntryValue('s')).toBe(false)
   })
+
+  test('If the number starts with zeros, they should be removed', () => {
+    expect(validatesEntryValue('000001')).toEqual(1)
+  })
 })
 
 describe('Validates the number declaration arrays', () => {
@@ -50,13 +54,13 @@ describe('Prepares the entry value before mounting english numerals.', () => {
   })
 })
 
-describe('Builds the english numeral structure', () => {
+describe('Builds the english dozens numeral structure', () => {
   test('Should build the dozen from the two last numbers of the array', () => {
     let reversedEntry = reverseEntry([1, 2, 3])
     expect(getEnglishDozen(reversedEntry)).toEqual('twenty-three')
   })
 
-  test('Should return only one numeral second digit is zero', () => {
+  test('Should return only one numeral when second digit is zero', () => {
     let reversedEntry = reverseEntry([1, 0, 2])
     expect(getEnglishDozen(reversedEntry)).toEqual('two')
   })
