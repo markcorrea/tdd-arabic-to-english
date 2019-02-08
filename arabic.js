@@ -1,7 +1,40 @@
 const entry = process.argv[2]
-const unities = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']
-const tenths = ['ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']
-const dozens = ['', '', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']
+const unities = [
+  'zero',
+  'one',
+  'two',
+  'three',
+  'four',
+  'five',
+  'six',
+  'seven',
+  'eight',
+  'nine',
+]
+const tenths = [
+  'ten',
+  'eleven',
+  'twelve',
+  'thirteen',
+  'fourteen',
+  'fifteen',
+  'sixteen',
+  'seventeen',
+  'eighteen',
+  'nineteen',
+]
+const dozens = [
+  '',
+  '',
+  'twenty',
+  'thirty',
+  'fourty',
+  'fifty',
+  'sixty',
+  'seventy',
+  'eighty',
+  'ninety',
+]
 
 function printConsole(message) {
   if (!entry || entry !== 'test') console.log(message)
@@ -31,7 +64,7 @@ let entryValue = validatesEntryValue(entry)
 printConsole(entryValue)
 
 function parseEntry(entry) {
-  let splittedString =  entry.toString().split('')
+  let splittedString = entry.toString().split('')
   return splittedString.map(x => parseInt(x))
 }
 
@@ -46,18 +79,26 @@ const reversedEntry = reverseEntry(parsedEntry)
 function getEnglishDozen(entry) {
   if (entry.length > 1) {
     if (entry[1] === 1) return tenths[entry[0]]
-    if (entry[1] === 0) return (entry[0] !== 0 ? unities[entry[0]] : '')
-    return dozens[entry[1]] + (unities[entry[0]] !== 'zero' ? '-' + unities[entry[0]] : '')
+    if (entry[1] === 0) return entry[0] !== 0 ? unities[entry[0]] : ''
+    return (
+      dozens[entry[1]] +
+      (unities[entry[0]] !== 'zero' ? '-' + unities[entry[0]] : '')
+    )
   }
   return unities[entry[0]]
 }
 
-console.log(getEnglishDozen(reversedEntry))
-
-function getEnglishHundred () {
-  return ''
+function getEnglishHundred(entry) {
+  let dozen = getEnglishDozen(entry)
+  if (entry.length > 2) {
+    return (
+      unities[entry[2]] + ' hundred' + (dozen !== '' ? ' and ' + dozen : '')
+    )
+  }
+  return dozen
 }
 
+printConsole(getEnglishHundred(reversedEntry))
 
 module.exports = {
   validatesEntryValue,
@@ -67,5 +108,5 @@ module.exports = {
   parseEntry,
   reverseEntry,
   getEnglishDozen,
-  getEnglishHundred
+  getEnglishHundred,
 }

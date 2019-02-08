@@ -6,11 +6,11 @@ var {
   parseEntry,
   reverseEntry,
   getEnglishDozen,
-  getEnglishHundred
+  getEnglishHundred,
 } = require('./arabic')
 
 function checkArrayOfStrings(array) {
-  return !array.some(item => typeof(item) !== 'string')
+  return !array.some(item => typeof item !== 'string')
 }
 
 describe('Validates the input given number', () => {
@@ -75,6 +75,18 @@ describe('Builds the english dozens numeral structure', () => {
 describe('Builds the english Hundreds numeral structure', () => {
   test('Should build the hundreds from the last three numbers of the array', () => {
     let reversedEntry = reverseEntry([1, 2, 3])
-    expect(getEnglishHundred(reversedEntry)).toEqual('one hundred and twenty three')
+    expect(getEnglishHundred(reversedEntry)).toEqual(
+      'one hundred and twenty-three'
+    )
+  })
+
+  test('Should return only the hundred name, without any dozen name', () => {
+    let reversedEntry = reverseEntry([5, 0, 0])
+    expect(getEnglishHundred(reversedEntry)).toEqual('five hundred')
+  })
+
+  test('Should return only the dozen name, even though is a hundred function', () => {
+    let reversedEntry = reverseEntry([5, 6])
+    expect(getEnglishHundred(reversedEntry)).toEqual('fifty-six')
   })
 })
