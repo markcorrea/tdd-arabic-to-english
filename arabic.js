@@ -54,7 +54,9 @@ function getEnglishDozen(entry) {
 
 console.log(getEnglishDozen(reversedEntry))
 
-
+function getEnglishHundred () {
+  return ''
+}
 
 
 module.exports = {
@@ -64,5 +66,6 @@ module.exports = {
   dozens,
   parseEntry,
   reverseEntry,
-  getEnglishDozen
+  getEnglishDozen,
+  getEnglishHundred
 }
