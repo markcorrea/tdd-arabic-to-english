@@ -7,6 +7,7 @@ var {
   reverseEntry,
   getEnglishDozen,
   getEnglishHundred,
+  getEnglishThousand
 } = require('./arabic')
 
 function checkArrayOfStrings(array) {
@@ -88,5 +89,22 @@ describe('Builds the english Hundreds numeral structure', () => {
   test('Should return only the dozen name, even though is a hundred function', () => {
     let reversedEntry = reverseEntry([5, 6])
     expect(getEnglishHundred(reversedEntry)).toEqual('fifty-six')
+  })
+})
+
+describe('Builds the english Thousands numeral structure', () => {
+  test('Should build the thousands from the last four numbers of the array', () => {
+    let reversedEntry = reverseEntry([1, 2, 3, 4])
+    expect(getEnglishThousand(reversedEntry)).toBe('one thousand two hundred and thirty-four')
+  })
+
+  test('Should return only the thousand name, without the hundred nor dozen name', () => {
+    let reversedEntry = reverseEntry([6, 0, 0, 0])
+    expect(getEnglishThousand(reversedEntry)).toBe('six thousand')
+  })
+
+  test('Should return the thousand and the hundred name, without the dozen name', () => {
+    let reversedEntry = reverseEntry([7, 4, 0, 0])
+    expect(getEnglishThousand(reversedEntry)).toBe('seven thousand four hundred')
   })
 })

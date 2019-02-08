@@ -100,6 +100,10 @@ function getEnglishHundred(entry) {
 
 printConsole(getEnglishHundred(reversedEntry))
 
+function getEnglishThousand(entry) {
+  return ''
+}
+
 module.exports = {
   validatesEntryValue,
   unities,
@@ -109,4 +113,5 @@ module.exports = {
   reverseEntry,
   getEnglishDozen,
   getEnglishHundred,
+  getEnglishThousand
 }
