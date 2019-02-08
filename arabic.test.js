@@ -55,7 +55,7 @@ describe('Prepares the entry value before mounting english numerals.', () => {
 })
 
 describe('Builds the english dozens numeral structure', () => {
-  test('Should build the dozen from the two last numbers of the array', () => {
+  test('Should build the dozen from the last two numbers of the array', () => {
     let reversedEntry = reverseEntry([1, 2, 3])
     expect(getEnglishDozen(reversedEntry)).toEqual('twenty-three')
   })
@@ -68,5 +68,11 @@ describe('Builds the english dozens numeral structure', () => {
   test('Should return nothing, once the length is bigger than 3 and the last two digits are zero', () => {
     let reversedEntry = reverseEntry([1, 0, 0])
     expect(getEnglishDozen(reversedEntry)).toEqual('')
+  })
+})
+
+describe('Builds the english Hundreds numeral structure', () => {
+  test('Should build the hundreds from the last three numbers of the array', () => {
+    let reversedEntry = reverseEntry([1, 2, 3]).toEqual('one hundred and twenty three')
   })
 })

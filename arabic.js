@@ -46,7 +46,7 @@ const reversedEntry = reverseEntry(parsedEntry)
 function getEnglishDozen(entry) {
   if (entry.length > 1) {
     if (entry[1] === 1) return tenths[entry[0]]
-    if (entry[1] === 0) return unities[entry[0]]
+    if (entry[1] === 0) return (entry[0] !== 0 ? unities[entry[0]] : '')
     return dozens[entry[1]] + (unities[entry[0]] !== 'zero' ? '-' + unities[entry[0]] : '')
   }
   return unities[entry[0]]
