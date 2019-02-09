@@ -21,7 +21,7 @@ All libraries will be installed inside the node_modules folder.
 
 ## How does it work?
 
-This project uses basically Javascript to convert a numeral (123) to its written form (one hundred and twenty-three). It is done using the command line in a simple command. Important to remember that the project doesn't process numbers higher than 999 billion (999.999.999.999), as it would be much extense.
+This project uses basically Javascript to convert a numeral (123) to its written form (one hundred and twenty-three). It is done using the command line in a simple command. Important to remember that the project doesn't process numbers higher than 999 billion (999.999.999.999), as it would be much extense. If needed, it can be easily implemented.
 
 To use it, go to the root folder via terminal and type the command:
 
