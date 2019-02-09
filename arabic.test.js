@@ -8,7 +8,8 @@ var {
   getEnglishDozen,
   getEnglishHundred,
   getEnglishThousand,
-  separateDecimalUnity
+  separateDecimalUnity,
+  returnEnglishNumeral
 } = require('./arabic')
 
 function checkArrayOfStrings(array) {
@@ -100,14 +101,14 @@ describe('Builds the english Hundreds numeral structure', () => {
   })
 })
 
-describe('Should build the Thousand part, based on the separated decimal unity', () => {
-  test('Gets the thousands decimal unity and returns its string', () => {
-    let reversedEntry = reverseEntry([1, 2, 3])
-    expect(getEnglishThousand(reversedEntry)).toEqual('one hundred and twenty-three thousand')
+describe.only('Builds the final sentence', () => {
+  test('Should return a thousand number', () => {
+    let reversedEntry = reverseEntry(1234)
+    expect(returnEnglishNumeral(reversedEntry)).toEqual('one thousand two hundred and thirty-four')
   })
 
-  test('Also gets the Thousand part, respecting the hundred rule of zeros.', () => {
-    let reversedEntry = reverseEntry([1, 0, 0])
-    expect(getEnglishThousand(reversedEntry)).toEqual('one hundred thousand')
+  test('Should return a million number', () => {
+    let reversedEntry = reverseEntry([1234567)
+    expect(returnEnglishNumeral(reversedEntry)).toEqual('one million two hundred and thirty-four thousand five hundred and sixty-seven')
   })
 })

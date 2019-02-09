@@ -100,15 +100,16 @@ function getEnglishHundred(entry) {
   return dozen
 }
 
-function getEnglishThousand(entry) {
+function returnEnglishNumeral(entry) {
   return ''
 }
 
 // Executes the code
-let entryValue = validatesEntryValue(entry)
-let parsedEntry = parseEntry(entryValue)
+const entryValue = validatesEntryValue(entry)
+const parsedEntry = parseEntry(entryValue)
 const reversedEntry = reverseEntry(parsedEntry)
-separateDecimalUnity(reversedEntry)
+const separatedDecimalUnity = separateDecimalUnity(reversedEntry)
+
 
 
 module.exports = {
@@ -121,5 +122,6 @@ module.exports = {
   getEnglishDozen,
   getEnglishHundred,
   getEnglishThousand,
-  separateDecimalUnity
+  separateDecimalUnity,
+  returnEnglishNumeral
 }
