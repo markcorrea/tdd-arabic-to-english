@@ -11,7 +11,7 @@ var {
   returnEnglishNumeral,
 } = require('./arabic')
 
-describe.only('Validates the input given number', () => {
+describe('Validates the input given number', () => {
   test('Sould return an item given on the command line.', () => {
     expect(validatesEntryValue(2)).toBe(2)
   })
@@ -37,7 +37,7 @@ describe.only('Validates the input given number', () => {
   })
 })
 
-const checkArrayOfStrings = (array) => {
+const checkArrayOfStrings = array => {
   return !array.some(item => typeof item !== 'string')
 }
 

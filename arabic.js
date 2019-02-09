@@ -44,12 +44,23 @@ const decimalUnities = ['', 'thousand', 'million', 'billion']
 /**
  * It was detected that the Console was being printed during the tests.
  * printConsole function checks if the command is being called by Jest, using the
- * argument 'test' and only prints the messages when not testing.
+ * argument 'test' and only prints the messages when not testing. Used for common logs.
  *
  * @param {String} message
  */
 const printConsole = message => {
   if (!entry || entry !== 'test') console.log(message)
+}
+
+/**
+ * It was detected that the Console was being printed during the tests.
+ * printAdvice function checks if the command is being called by Jest, using the
+ * argument 'test' and only prints the messages when not testing. Used for errors.
+ *
+ * @param {String} message
+ */
+const printAdvice = message => {
+  if (!entry || entry !== 'test') console.log(`!!!\nHEY! => ${message}\n!!!`)
 }
 
 /**
@@ -62,24 +73,27 @@ const printConsole = message => {
  */
 const validatesEntryValue = entryValue => {
   if (entryValue === undefined) {
-    printConsole(
-      '!!!\nHEY! => Please insert a number after the command. Example: node arabic2english.js 2\n!!!'
+    printAdvice(
+      'Please insert a number after the command. Example: node arabic2english.js 2.'
     )
+    return false
+  }
+
+  const regex = /^[0-9]*$/
+  if (!regex.test(entryValue)) {
+    printAdvice('The given number should contain only numbers.')
     return false
   }
 
   if (entryValue.length > 12) {
-    printConsole(
-      '!!!\nHEY! => The given number should not have more than 12 characters.\n!!!'
-    )
+    printAdvice('The given number should not have more than 12 characters.')
     return false
   }
 
   const numberValue = parseInt(entryValue)
-
   if (typeof numberValue !== 'number' || Number.isNaN(numberValue)) {
-    printConsole(
-      '!!!\nHEY! => The given number is not of the type number. Please insert a valid number.\n!!!'
+    printAdvice(
+      'The given number is not of the type number. Please insert a valid number.'
     )
     return false
   }
@@ -160,9 +174,7 @@ const getEnglishDozen = entry => {
 const getEnglishHundred = entry => {
   const dozen = getEnglishDozen(entry)
   if (entry.length > 2) {
-    return (
-      unities[entry[2]] + ' hundred' + (dozen !== '' ? ' and ' + dozen : '')
-    )
+    return `${unities[entry[2]]} hundred${dozen !== '' ? ' and ' + dozen : ''}`
   }
   return dozen
 }
@@ -191,8 +203,9 @@ const returnEnglishNumeral = entry => {
 
     let sentence = ''
     separatedDecimalUnity.map((unity, index) => {
-      sentence =
-        getEnglishHundred(unity) + ' ' + decimalUnities[index] + ' ' + sentence
+      sentence = `${getEnglishHundred(unity)} ${
+        decimalUnities[index]
+      } ${sentence}`
     })
     return sentence.trim()
   }
