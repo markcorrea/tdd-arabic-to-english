@@ -8,7 +8,7 @@ var {
   getEnglishDozen,
   getEnglishHundred,
   separateDecimalUnity,
-  returnEnglishNumeral
+  returnEnglishNumeral,
 } = require('./arabic')
 
 function checkArrayOfStrings(array) {
@@ -48,7 +48,7 @@ describe('Validates the number declaration arrays', () => {
 })
 
 describe('Prepares the entry value before mounting english numerals.', () => {
-  test('Should return the entered numeral as an array of strings for each letter', () => {
+  test('Should return the entered numeral as an array of integers', () => {
     expect(parseEntry(12345)).toEqual([1, 2, 3, 4, 5])
   })
 
@@ -102,10 +102,14 @@ describe('Builds the english Hundreds numeral structure', () => {
 
 describe('Builds the final sentence', () => {
   test('Should return a thousand number', () => {
-    expect(returnEnglishNumeral(1234)).toEqual('one thousand two hundred and thirty-four')
+    expect(returnEnglishNumeral(1234)).toEqual(
+      'one thousand two hundred and thirty-four'
+    )
   })
 
   test('Should return a million number', () => {
-    expect(returnEnglishNumeral(1234567)).toEqual('one million two hundred and thirty-four thousand five hundred and sixty-seven')
+    expect(returnEnglishNumeral(1234567)).toEqual(
+      'one million two hundred and thirty-four thousand five hundred and sixty-seven'
+    )
   })
 })
