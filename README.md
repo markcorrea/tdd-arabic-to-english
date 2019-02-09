@@ -27,7 +27,7 @@ To use it, go to the root folder via terminal and type the command:
 
 `node arabic2english.js <my_number_here_without_tags>`
 
-Example: `node arabic2english.js 1345`
+Example: `node arabic2english.js 1345`.
 It should return: `one thousand three hundred and forty-five`
 
 ## Testing:
