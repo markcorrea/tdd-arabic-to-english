@@ -49,4 +49,4 @@ ECMASCRIPT 6 (2015)
 - JavaScript recent updates on language, released in 2015.
 
 GIT
-- Version control system, aiming on performance.
+- Version control system.
