@@ -11,11 +11,7 @@ var {
   returnEnglishNumeral,
 } = require('./arabic')
 
-function checkArrayOfStrings(array) {
-  return !array.some(item => typeof item !== 'string')
-}
-
-describe('Validates the input given number', () => {
+describe.only('Validates the input given number', () => {
   test('Sould return an item given on the command line.', () => {
     expect(validatesEntryValue(2)).toBe(2)
   })
@@ -33,9 +29,17 @@ describe('Validates the input given number', () => {
   })
 
   test('Should return an advice that the maximum allowed number of characters is twelve', () => {
-    expect(validatesEntryValue(1234567891234)).toBe(false)
+    expect(validatesEntryValue('1234567891234')).toBe(false)
+  })
+
+  test('Should return an advice if the given number contains any strings.', () => {
+    expect(validatesEntryValue('123456fdw')).toBe(false)
   })
 })
+
+const checkArrayOfStrings = (array) => {
+  return !array.some(item => typeof item !== 'string')
+}
 
 describe('Validates the number declaration arrays', () => {
   test('Returns true if unities array only contains strings', () => {

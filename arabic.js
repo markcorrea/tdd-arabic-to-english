@@ -68,11 +68,18 @@ const validatesEntryValue = entryValue => {
     return false
   }
 
+  if (entryValue.length > 12) {
+    printConsole(
+      '!!!\nHEY! => The given number should not have more than 12 characters.\n!!!'
+    )
+    return false
+  }
+
   const numberValue = parseInt(entryValue)
 
   if (typeof numberValue !== 'number' || Number.isNaN(numberValue)) {
     printConsole(
-      '!!!\nHEY! => The given number is not of the type number. Please insert a valid number\n!!!'
+      '!!!\nHEY! => The given number is not of the type number. Please insert a valid number.\n!!!'
     )
     return false
   }
