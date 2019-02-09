@@ -36,6 +36,12 @@ const dozens = [
   'ninety',
 ]
 
+const decimalUnities = [
+  '',
+  'thousand',
+  'million'
+]
+
 function printConsole(message) {
   if (!entry || entry !== 'test') console.log(message)
 }
@@ -101,14 +107,22 @@ function getEnglishHundred(entry) {
 }
 
 function returnEnglishNumeral(entry) {
-  return ''
+  const entryValue = validatesEntryValue(entry)
+  const parsedEntry = parseEntry(entryValue)
+  const reversedEntry = reverseEntry(parsedEntry)
+  const separatedDecimalUnity = separateDecimalUnity(reversedEntry)
+
+  let sentence = ''
+  
+  separatedDecimalUnity.map((unity, index) => {
+    sentence = getEnglishHundred(unity) + ' ' + decimalUnities[index] + ' ' + sentence
+  })
+
+  return sentence.trim()
 }
 
-// Executes the code
-const entryValue = validatesEntryValue(entry)
-const parsedEntry = parseEntry(entryValue)
-const reversedEntry = reverseEntry(parsedEntry)
-const separatedDecimalUnity = separateDecimalUnity(reversedEntry)
+printConsole(returnEnglishNumeral(entry))
+
 
 
 
@@ -121,7 +135,6 @@ module.exports = {
   reverseEntry,
   getEnglishDozen,
   getEnglishHundred,
-  getEnglishThousand,
   separateDecimalUnity,
   returnEnglishNumeral
 }

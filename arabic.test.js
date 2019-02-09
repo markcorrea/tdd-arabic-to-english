@@ -7,7 +7,6 @@ var {
   reverseEntry,
   getEnglishDozen,
   getEnglishHundred,
-  getEnglishThousand,
   separateDecimalUnity,
   returnEnglishNumeral
 } = require('./arabic')
@@ -101,14 +100,12 @@ describe('Builds the english Hundreds numeral structure', () => {
   })
 })
 
-describe.only('Builds the final sentence', () => {
+describe('Builds the final sentence', () => {
   test('Should return a thousand number', () => {
-    let reversedEntry = reverseEntry(1234)
-    expect(returnEnglishNumeral(reversedEntry)).toEqual('one thousand two hundred and thirty-four')
+    expect(returnEnglishNumeral(1234)).toEqual('one thousand two hundred and thirty-four')
   })
 
   test('Should return a million number', () => {
-    let reversedEntry = reverseEntry([1234567)
-    expect(returnEnglishNumeral(reversedEntry)).toEqual('one million two hundred and thirty-four thousand five hundred and sixty-seven')
+    expect(returnEnglishNumeral(1234567)).toEqual('one million two hundred and thirty-four thousand five hundred and sixty-seven')
   })
 })
