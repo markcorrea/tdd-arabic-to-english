@@ -9,7 +9,7 @@ var {
   getEnglishHundred,
   separateDecimalUnity,
   returnEnglishNumeral,
-} = require('./arabic')
+} = require('./arabic2english')
 
 describe('Validates the input given number', () => {
   test('Sould return an item given on the command line.', () => {
