@@ -59,31 +59,24 @@ function validatesEntryValue(entryValue) {
   return numberValue
 }
 
-let entryValue = validatesEntryValue(entry)
-
-printConsole(entryValue)
-
 function parseEntry(entry) {
   let splittedString = entry.toString().split('')
   return splittedString.map(x => parseInt(x))
 }
 
-let parsedEntry = parseEntry(entryValue)
-
 function reverseEntry(entry) {
   return entry.reverse()
 }
 
-const reversedEntry = reverseEntry(parsedEntry)
-
-
-function separateDecimalUnity(reversedEntry) {
-  return ''
+function separateDecimalUnity(entry) {
+  let decimalQuantity = Math.ceil(entry.length/3)
+  let separated = []
+  for(let i = 0; i < decimalQuantity; i++) {
+    separated[i] = entry.slice(0, 3)
+    entry.splice(0, 3)
+  }
+  return separated
 }
-
-
-
-
 
 function getEnglishDozen(entry) {
   if (entry.length > 1) {
@@ -107,11 +100,16 @@ function getEnglishHundred(entry) {
   return dozen
 }
 
-// printConsole(getEnglishHundred(reversedEntry))
-
 function getEnglishThousand(entry) {
   return ''
 }
+
+// Executes the code
+let entryValue = validatesEntryValue(entry)
+let parsedEntry = parseEntry(entryValue)
+const reversedEntry = reverseEntry(parsedEntry)
+separateDecimalUnity(reversedEntry)
+
 
 module.exports = {
   validatesEntryValue,

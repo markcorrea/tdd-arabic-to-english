@@ -57,10 +57,10 @@ describe('Prepares the entry value before mounting english numerals.', () => {
   })
 })
 
-describe.only('Should separate the entry in groups of three', () => {
+describe('Should separate the entry in groups of three', () => {
   test('Should return an array with two arrays of entry inside', () => {
     let reversedEntry = reverseEntry([1, 2, 3, 4, 5])
-    expect(separateDecimalUnity(reversedEntry)).toBe([[5, 4, 3], [2, 1]])
+    expect(separateDecimalUnity(reversedEntry)).toEqual([[5, 4, 3], [2, 1]])
   })
 })
 
