@@ -31,6 +31,10 @@ describe('Validates the input given number', () => {
   test('If the number starts with zeros, they should be removed', () => {
     expect(validatesEntryValue('000001')).toEqual(1)
   })
+
+  test('Should return an advice that the maximum allowed number of characters is twelve', () => {
+    expect(validatesEntryValue(1234567891234)).toBe(false)
+  })
 })
 
 describe('Validates the number declaration arrays', () => {
