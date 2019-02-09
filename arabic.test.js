@@ -7,7 +7,8 @@ var {
   reverseEntry,
   getEnglishDozen,
   getEnglishHundred,
-  getEnglishThousand
+  getEnglishThousand,
+  separateDecimalUnity
 } = require('./arabic')
 
 function checkArrayOfStrings(array) {
@@ -56,6 +57,13 @@ describe('Prepares the entry value before mounting english numerals.', () => {
   })
 })
 
+describe.only('Should separate the entry in groups of three', () => {
+  test('Should return an array with two arrays of entry inside', () => {
+    let reversedEntry = reverseEntry([1, 2, 3, 4, 5])
+    expect(separateDecimalUnity(reversedEntry)).toBe([[5, 4, 3], [2, 1]])
+  })
+})
+
 describe('Builds the english dozens numeral structure', () => {
   test('Should build the dozen from the last two numbers of the array', () => {
     let reversedEntry = reverseEntry([1, 2, 3])
@@ -92,19 +100,19 @@ describe('Builds the english Hundreds numeral structure', () => {
   })
 })
 
-describe('Builds the english Thousands numeral structure', () => {
-  test('Should build the thousands from the last four numbers of the array', () => {
-    let reversedEntry = reverseEntry([1, 2, 3, 4])
-    expect(getEnglishThousand(reversedEntry)).toBe('one thousand two hundred and thirty-four')
-  })
+// describe('Builds the english Thousands numeral structure', () => {
+//   test('Should build the thousands from the last four numbers of the array', () => {
+//     let reversedEntry = reverseEntry([1, 2, 3, 4])
+//     expect(getEnglishThousand(reversedEntry)).toBe('one thousand two hundred and thirty-four')
+//   })
 
-  test('Should return only the thousand name, without the hundred nor dozen name', () => {
-    let reversedEntry = reverseEntry([6, 0, 0, 0])
-    expect(getEnglishThousand(reversedEntry)).toBe('six thousand')
-  })
+//   test('Should return only the thousand name, without the hundred nor dozen name', () => {
+//     let reversedEntry = reverseEntry([6, 0, 0, 0])
+//     expect(getEnglishThousand(reversedEntry)).toBe('six thousand')
+//   })
 
-  test('Should return the thousand and the hundred name, without the dozen name', () => {
-    let reversedEntry = reverseEntry([7, 4, 0, 0])
-    expect(getEnglishThousand(reversedEntry)).toBe('seven thousand four hundred')
-  })
-})
+//   test('Should return the thousand and the hundred name, without the dozen name', () => {
+//     let reversedEntry = reverseEntry([7, 4, 0, 0])
+//     expect(getEnglishThousand(reversedEntry)).toBe('seven thousand four hundred')
+//   })
+// })

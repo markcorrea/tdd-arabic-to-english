@@ -76,6 +76,15 @@ function reverseEntry(entry) {
 
 const reversedEntry = reverseEntry(parsedEntry)
 
+
+function separateDecimalUnity(reversedEntry) {
+  return ''
+}
+
+
+
+
+
 function getEnglishDozen(entry) {
   if (entry.length > 1) {
     if (entry[1] === 1) return tenths[entry[0]]
@@ -98,7 +107,7 @@ function getEnglishHundred(entry) {
   return dozen
 }
 
-printConsole(getEnglishHundred(reversedEntry))
+// printConsole(getEnglishHundred(reversedEntry))
 
 function getEnglishThousand(entry) {
   return ''
@@ -113,5 +122,6 @@ module.exports = {
   reverseEntry,
   getEnglishDozen,
   getEnglishHundred,
-  getEnglishThousand
+  getEnglishThousand,
+  separateDecimalUnity
 }
